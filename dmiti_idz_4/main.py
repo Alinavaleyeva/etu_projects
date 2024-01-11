@@ -7,7 +7,8 @@ def binary_generator(probability):
 
 #для 2 задания
 def all_experiments(n, probability_A, probability_B): # возвращает массив из n пар - результаты выбора строчки и столбца
-   return [(binary_generator(probability_A), binary_generator(probability_B)) for i in range(n)]
+   return [(binary_generator(probability_A), binary_generator(probability_B))
+           for i in range(n)]
 def experiments_to_points(experiments): # возвращает массив из результатов всех экспериментов
    answer_array = []
    for experiment in experiments:
@@ -65,7 +66,7 @@ def task3():
    print(f"Дисперсия: {variance}")
    print(f"Теоретическое СКО: {variance ** 0.5}")
    print()
-   
+
 #4 задание
 def task4_1():
    print("Задание 4.1. Обучение с подкреплением")
@@ -80,7 +81,7 @@ def task4_1():
       if points > 0: # если в этой клетке положительное кол-во очков
          balls[experiment[0]] += points #в случае выигрыша помещает дополнительные шары того же цвета в количестве равном выигрышу в свою коробку
       probability_A = balls[0] / sum(balls)
-   print(f"Вероятность выбора строчки 1 после {count} экспериментов: {1 - probability_A}")
+   print(f"Вероятность выбора второй строчки после {count} экспериментов: {1 - probability_A}")
    experiments_arr = all_experiments(count, probability_A, probability_B)
    points = experiments_to_points(experiments_arr)
    A_won = sum(points)
@@ -111,7 +112,7 @@ def task4_2():
       if points < 0:
          balls[experiment[0]] += points #вычитание = сложение с отрицательным points
       probability_A = balls[0]/sum(balls)
-   print(f"Вероятность выбора строчки 1 после {count} экспериментов: {1 - probability_A}")
+   print(f"Вероятность выбора второй строчки после {count} экспериментов: {1 - probability_A}")
    experiments_arr = all_experiments(count, probability_A, probability_B)
    points = experiments_to_points(experiments_arr)
    A_won = sum(points)
@@ -146,8 +147,8 @@ def task4_3():
          balls_B[experiment[1]] += abs(points) #прибавляем шары игроку B
       probability_A = balls_A[0]/sum(balls_A)
       probability_B = balls_B[0]/sum(balls_B)
-   print(f"Вероятность выбора строчки 1 игроком A после {count} экспериментов: {1 - probability_A}")
-   print(f"Вероятность выбора строчки 1 игроком B после {count} экспериментов: {1 - probability_B}")
+   print(f"Вероятность выбора второй строчки игроком A после {count} экспериментов: {1 - probability_A}")
+   print(f"Вероятность выбора второй строчки игроком B после {count} экспериментов: {1 - probability_B}")
    experiments_arr = all_experiments(count, probability_A, probability_B)
    points = experiments_to_points(experiments_arr)
    A_won = sum(points)
