@@ -5,7 +5,7 @@ field = [[2, -3],[-1, 2]] #заданное поле
 def binary_generator(probability):
   return 0 if random.uniform(0, 1) < probability else 1
 
-#2 задание
+#для 2 задания
 def all_experiments(n, probability_A, probability_B): # возвращает массив из n пар - результаты выбора строчки и столбца
    return [(binary_generator(probability_A), binary_generator(probability_B)) for i in range(n)]
 def experiments_to_points(experiments): # возвращает массив из результатов всех экспериментов
@@ -21,10 +21,7 @@ def calc_mathematical_expectation(points, events): # возвращает мат
 def calc_variance(points, events): # Возвращает дисперсию
    return sum(event * (point - calc_mathematical_expectation(points, events)) ** 2 for point, event in zip(points, events))
 
-def one_experiment(probability_A, probability_B):  # возвращает результат одного эксперимента в виде пары значений
-   return binary_generator(probability_A), binary_generator(probability_B)
-
-
+#2 задание
 def task2():
    print("Задание 2")
    count = 100
@@ -46,6 +43,7 @@ def task2():
    print(f"Теоретическое СКО: {variance ** 0.5}")
    print()
 
+#3 задание
 def task3():
    print("Задание 3")
    probability_A = 1 / 2 # Вероятность выбора строчки игроком А
@@ -67,7 +65,8 @@ def task3():
    print(f"Дисперсия: {variance}")
    print(f"Теоретическое СКО: {variance ** 0.5}")
    print()
-
+   
+#4 задание
 def task4_1():
    print("Задание 4.1. Обучение с подкреплением")
    probability_A = 1 / 2
