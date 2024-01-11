@@ -1,6 +1,6 @@
 import random
 
-field = [[2, -3],[-1, 2]] #заданное поле
+my_field = [[2, -3],[-1, 2]] #заданное поле
 #1 задание
 def binary_generator(probability):
   return 0 if random.uniform(0, 1) < probability else 1
@@ -12,7 +12,7 @@ def all_experiments(n, probability_A, probability_B): # возвращает м�
 def experiments_to_points(experiments): # возвращает массив из результатов всех экспериментов
    answer_array = []
    for experiment in experiments:
-       value = field[experiment[0]][experiment[1]]
+       value = my_field[experiment[0]][experiment[1]]
        answer_array.append(value)
    return answer_array
 
@@ -38,7 +38,7 @@ def task2():
    # события выбора
    events = [probability_A * probability_B, probability_A * (1 - probability_B), probability_B * (1 - probability_A),
              (1 - probability_A) * (1 - probability_B)]
-   points_values = [point for row in field for point in row]
+   points_values = [point for row in my_field for point in row]
    print(f"Среднеквадратичное отклонение: {(sum((point - sum(points_values) / len(points_values)) ** 2 for point in points_values) / len(points_values)) ** 0.5}")
    print(f"Мат ожидание: {calc_mathematical_expectation(points_values, events)}")
    variance = calc_variance(points_values, events)
@@ -60,7 +60,7 @@ def task3():
    # события выбора
    events = [probability_A * probability_B, probability_A * (1 - probability_B), probability_B * (1 - probability_A),
              (1 - probability_A) * (1 - probability_B)]
-   points_values = [point for row in field for point in row]
+   points_values = [point for row in my_field for point in row]
    print(
        f"Среднеквадратичное отклонение: {(sum((point - sum(points_values) / len(points_values)) ** 2 for point in points_values) / len(points_values)) ** 0.5}")
    print(f"Мат ожидание: {calc_mathematical_expectation(points_values, events)}")
@@ -79,7 +79,7 @@ def task4_1():
    # Обучение
    for i in range(count):
       experiment = binary_generator(probability_A), binary_generator(probability_B)
-      points = field[experiment[0]][experiment[1]]
+      points = my_field[experiment[0]][experiment[1]]
       if points > 0: # если в этой клетке положительное кол-во очков
          balls[experiment[0]] += points #в случае выигрыша помещает дополнительные шары того же цвета в количестве равном выигрышу в свою коробку
       probability_A = balls[0] / sum(balls)
@@ -92,7 +92,7 @@ def task4_1():
    # события выбора
    events = [probability_A * probability_B, probability_A * (1 - probability_B), probability_B * (1 - probability_A),
              (1 - probability_A) * (1 - probability_B)]
-   points_values = [point for row in field for point in row]
+   points_values = [point for row in my_field for point in row]
    print(
        f"Среднеквадратичное отклонение: {(sum((point - sum(points_values) / len(points_values)) ** 2 for point in points_values) / len(points_values)) ** 0.5}")
    print(f"Мат ожидание: {calc_mathematical_expectation(points_values, events)}")
@@ -110,7 +110,7 @@ def task4_2():
    # Обучение
    for i in range(count):
       experiment = binary_generator(probability_A), binary_generator(probability_B)
-      points = field[experiment[0]][experiment[1]]
+      points = my_field[experiment[0]][experiment[1]]
       if points < 0:
          balls[experiment[0]] += points #вычитание = сложение с отрицательным points
       probability_A = balls[0]/sum(balls)
@@ -123,7 +123,7 @@ def task4_2():
    # события выбора
    events = [probability_A * probability_B, probability_A * (1 - probability_B), probability_B * (1 - probability_A),
              (1 - probability_A) * (1 - probability_B)]
-   points_values = [point for row in field for point in row]
+   points_values = [point for row in my_field for point in row]
    print(
       f"Среднеквадратичное отклонение: {(sum((point - sum(points_values) / len(points_values)) ** 2 for point in points_values) / len(points_values)) ** 0.5}")
    print(f"Мат ожидание: {calc_mathematical_expectation(points_values, events)}")
@@ -142,7 +142,7 @@ def task4_3():
    # Обучение
    for i in range(count):
       experiment = binary_generator(probability_A), binary_generator(probability_B)
-      points = field[experiment[0]][experiment[1]]
+      points = my_field[experiment[0]][experiment[1]]
       if points > 0:
          balls_A[experiment[0]] += points #прибаляем шары игроку A
       elif points < 0:
@@ -159,7 +159,7 @@ def task4_3():
    # события выбора
    events = [probability_A * probability_B, probability_A * (1 - probability_B), probability_B * (1 - probability_A),
              (1 - probability_A) * (1 - probability_B)]
-   points_values = [point for row in field for point in row]
+   points_values = [point for row in my_field for point in row]
    print(
       f"Среднеквадратичное отклонение: {(sum((point - sum(points_values) / len(points_values)) ** 2 for point in points_values) / len(points_values)) ** 0.5}")
    print(f"Мат ожидание: {calc_mathematical_expectation(points_values, events)}")
