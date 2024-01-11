@@ -19,8 +19,10 @@ def experiments_to_points(experiments): # возвращает массив из
 #2.3
 def calc_mathematical_expectation(points, events): # возвращает математическое ожидание
    return sum(point * occur for point, occur in zip(points, events))
-def calc_variance(points, events): # Возвращает дисперсию
-   return sum(event * (point - calc_mathematical_expectation(points, events)) ** 2 for point, event in zip(points, events))
+
+def calc_variance(points, events):  # Возвращает дисперсию
+   return calc_mathematical_expectation(
+      [(point - calc_mathematical_expectation(points, events)) ** 2 for point in points], events)
 
 #2 задание
 def task2():
